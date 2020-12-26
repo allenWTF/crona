@@ -47,12 +47,23 @@ class Home extends Component {
         this.CheckForm(); // Fill empty form fields with default values.
         this.business.Update();
 
-        let CurrentNPV = this.business.InvestmentProjectEvaluation.CurrentNPV;
+        let InvestmentEvaluation = this.business.InvestmentProjectEvaluation;
         let CashFlow = this.business.CashFlowForecast.FinancialActivities.CashBalance;
-        this.setState({dataset: CurrentNPV, dataset_dynamic: CashFlow});
+        let BreakEven = this.business.BreakEven;
+        let MainCoeff = this.business.MainFinancialCoeff;
+
+        let Business = this.business;
+
+        this.setState({dataset: InvestmentEvaluation, dataset_dynamic: CashFlow});
 
         // Open new window with results.
-        this.props.navigation.navigate('Results', {CurrentNPV: CurrentNPV, CashFlow: CashFlow});
+        this.props.navigation.navigate('Results', {
+            BreakEven: BreakEven,
+            InvestmentEvaluation: InvestmentEvaluation,
+            CashFlow: CashFlow,
+            MainCoeff: MainCoeff,
+            Business: Business
+        });
     }
 
     CheckForm() {
@@ -197,7 +208,7 @@ class Home extends Component {
                             units={'%'}
                             value={this.state.DiscountRate}
                             placeholder={'Например, 10'}/>
-                        <Button onPress={this.Calculate}></Button>
+                        <Button onPress={this.Calculate} title={"Рассчитать финансовый план"}></Button>
                     </View>
                 </ScrollView>
             </SafeAreaView>

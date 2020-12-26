@@ -18,7 +18,8 @@ import Home from './screens/Home';
 import Header from './components/Header/Header';
 import About from './screens/About';
 import Results from './screens/Results';
-
+import Variation from "./screens/Variation";
+import Elasticity from "./screens/Elasticity";
 
 /**
  * Навигация главного экрана.
@@ -36,6 +37,12 @@ const HomeNavigation = createStackNavigator({
     },
     Results: {
         screen: Results
+    },
+    Variation: {
+        screen: Variation
+    },
+    Elasticity: {
+        screen: Elasticity
     }
 });
 

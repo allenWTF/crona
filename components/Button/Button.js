@@ -10,11 +10,11 @@ class Button extends Component {
     }
 
     render() {
-        const {...restProps} = this.props;
+        const {title, bgColor, ...restProps} = this.props;
         return (
             <TouchableOpacity activeOpacity={0.6} {...restProps} >
-                <View style={styles.buttonView}>
-                    <Text  maxFontSizeMultiplier={1} style={styles.buttonText}>Рассчитать Бизнес-план</Text>
+                <View style={{...styles.buttonView, backgroundColor: bgColor ? bgColor : styles.buttonView.backgroundColor}}>
+                    <Text  maxFontSizeMultiplier={1} style={styles.buttonText}>{title}</Text>
                 </View>
             </TouchableOpacity>
         );
@@ -38,7 +38,8 @@ const styles = StyleSheet.create({
     buttonText: {
         color: '#ffffff',
         fontWeight: '700',
-        fontSize: 17
+        fontSize: 17,
+        paddingHorizontal: 10
     }
 });
 
